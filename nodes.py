@@ -64,14 +64,18 @@ class DownloadAndLoadGIMMVFIModel:
         model_path = os.path.join(download_path, model)
 
         if not os.path.exists(model_path):
-            log.info(f"Downloading GMMI-VFI model to: {model_path}")
-            from huggingface_hub import snapshot_download
-            snapshot_download(
-                repo_id="Kijai/GIMM-VFI_safetensors",
-                allow_patterns=[f"*{model}*"],
-                local_dir=download_path,
-                local_dir_use_symlinks=False,
-            )
+            if os.path.exists('/stable-diffusion-cache/models/interpolation'):
+                download_path = '/stable-diffusion-cache/models/interpolation'
+                model_path = os.path.join(download_path, model)
+            else:
+                log.info(f"Downloading GMMI-VFI model to: {model_path}")
+                from huggingface_hub import snapshot_download
+                snapshot_download(
+                    repo_id="Kijai/GIMM-VFI_safetensors",
+                    allow_patterns=[f"*{model}*"],
+                    local_dir=download_path,
+                    local_dir_use_symlinks=False,
+                )
 
         if "gimmvfi_r" in model:
             config_path = os.path.join(script_directory, "configs", "gimmvfi", "gimmvfi_r_arb.yaml")
@@ -83,14 +87,17 @@ class DownloadAndLoadGIMMVFIModel:
         flow_model_path = os.path.join(folder_paths.models_dir, 'interpolation', 'gimm-vfi', flow_model)
 
         if not os.path.exists(flow_model_path):
-            log.info(f"Downloading RAFT model to: {flow_model_path}")
-            from huggingface_hub import snapshot_download
-            snapshot_download(
-                repo_id="Kijai/GIMM-VFI_safetensors",
-                allow_patterns=[f"*{flow_model}*"],
-                local_dir=download_path,
-                local_dir_use_symlinks=False,
-            )
+            if os.path.exists('/stable-diffusion-cache/models/interpolation'):
+                flow_model_path = os.path.join(download_path, flow_model)
+            else:
+                log.info(f"Downloading RAFT model to: {flow_model_path}")
+                from huggingface_hub import snapshot_download
+                snapshot_download(
+                    repo_id="Kijai/GIMM-VFI_safetensors",
+                    allow_patterns=[f"*{flow_model}*"],
+                    local_dir=download_path,
+                    local_dir_use_symlinks=False,
+                )
        
             
         with open(config_path) as f:
