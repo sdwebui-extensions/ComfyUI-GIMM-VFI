@@ -64,8 +64,8 @@ class DownloadAndLoadGIMMVFIModel:
         model_path = os.path.join(download_path, model)
 
         if not os.path.exists(model_path):
-            if os.path.exists('/stable-diffusion-cache/models/interpolation'):
-                download_path = '/stable-diffusion-cache/models/interpolation'
+            if os.path.exists(os.path.join(folder_paths.cache_dir, "models/interpolation")):
+                download_path = os.path.join(folder_paths.cache_dir, "models/interpolation")
                 model_path = os.path.join(download_path, model)
             else:
                 log.info(f"Downloading GMMI-VFI model to: {model_path}")
@@ -87,7 +87,7 @@ class DownloadAndLoadGIMMVFIModel:
         flow_model_path = os.path.join(folder_paths.models_dir, 'interpolation', 'gimm-vfi', flow_model)
 
         if not os.path.exists(flow_model_path):
-            if os.path.exists('/stable-diffusion-cache/models/interpolation'):
+            if os.path.exists(os.path.join(folder_paths.cache_dir, "models/interpolation")):
                 flow_model_path = os.path.join(download_path, flow_model)
             else:
                 log.info(f"Downloading RAFT model to: {flow_model_path}")
