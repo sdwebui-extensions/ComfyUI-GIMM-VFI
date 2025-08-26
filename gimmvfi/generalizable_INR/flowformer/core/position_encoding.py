@@ -1,4 +1,3 @@
-from loguru import logger
 import math
 import torch
 from torch import nn

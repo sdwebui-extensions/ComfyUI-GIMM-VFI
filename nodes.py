@@ -5,11 +5,9 @@ import folder_paths
 import yaml
 import comfy.model_management as mm
 from comfy.utils import ProgressBar, load_torch_file
-from PIL import Image
 
 from omegaconf import OmegaConf
 from tqdm import tqdm
-import numpy as np
 import cv2
 
 from .gimmvfi.generalizable_INR.gimmvfi_r import GIMMVFI_R

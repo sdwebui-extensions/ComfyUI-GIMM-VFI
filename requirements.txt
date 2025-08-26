@@ -5,5 +5,4 @@ cupy-cuda12x>=13.3.0
 timm
 omegaconf
 yacs
-loguru
 easydict

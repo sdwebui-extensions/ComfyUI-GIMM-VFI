@@ -1,5 +1,4 @@
 from torch.utils.tensorboard import SummaryWriter
-from loguru import logger as loguru_logger
 
 
 class Logger:
@@ -22,7 +21,7 @@ class Logger:
         metrics_str = ("{:10.4f}, " * len(metrics_data)).format(*metrics_data)
 
         # print the training status
-        loguru_logger.info(training_str + metrics_str)
+        print(training_str + metrics_str)
 
         if self.writer is None:
             if self.cfg.log_dir is None:

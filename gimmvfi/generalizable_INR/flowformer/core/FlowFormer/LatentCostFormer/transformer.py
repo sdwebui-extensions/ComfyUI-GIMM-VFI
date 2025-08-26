@@ -1,25 +1,8 @@
-import loguru
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-from torch import einsum
 
-from einops.layers.torch import Rearrange
-from einops import rearrange
-
-from ...utils.utils import coords_grid, bilinear_sampler, upflow8
-from ..common import (
-    FeedForward,
-    pyramid_retrieve_tokens,
-    sampler,
-    sampler_gaussian_fix,
-    retrieve_tokens,
-    MultiHeadAttention,
-    MLP,
-)
-from ..encoders import twins_svt_large_context, twins_svt_large
-from ...position_encoding import PositionEncodingSine, LinearPositionEncoding
-from .twins import PosConv
+from ...utils.utils import coords_grid
+from ..encoders import twins_svt_large
 from .encoder import MemoryEncoder
 from .decoder import MemoryDecoder
 from .cnn import BasicEncoder
