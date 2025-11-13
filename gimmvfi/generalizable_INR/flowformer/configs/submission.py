@@ -28,7 +28,7 @@ _CN.latentcostformer.cost_latent_dim = 128
 _CN.latentcostformer.arc_type = "transformer"
 _CN.latentcostformer.cost_heads_num = 1
 # encoder
-_CN.latentcostformer.pretrain = True
+_CN.latentcostformer.pretrain = False
 _CN.latentcostformer.context_concat = False
 _CN.latentcostformer.encoder_depth = 3
 _CN.latentcostformer.feat_cross_attn = False
